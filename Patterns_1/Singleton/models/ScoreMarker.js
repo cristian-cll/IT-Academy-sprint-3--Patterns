@@ -4,20 +4,9 @@
         this.board = [];
     }
 
-    findPlayer(name) {
-        const player = this.board.find(player => player.name === name)
-        if(player){
-                 console.log(`'${player.name}' player selected!`);
-                 return player;
-            }
-        console.log(`This ${name} player does not exist or has not been added to a game.`);
-        return undefined;
-    }
-
     join(player) {
         this.board.push(player);
     }
-
 
     update(name, scores) {
         const playerFind = this.board.find(player => player.name === name);
@@ -42,4 +31,4 @@
 
 
   
-  module.exports = new ScoreMarker();
+module.exports = new ScoreMarker();

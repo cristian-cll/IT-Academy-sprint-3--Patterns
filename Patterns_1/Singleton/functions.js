@@ -1,16 +1,18 @@
 const readline = require("readline");
 
 const clearScreen = () => {
-    setTimeout(()=>{
-        readline.cursorTo(process.stdout, 0)
-        readline.clearScreenDown(process.stdout)
-        menu()
+    setTimeout(() => {
+        readline.cursorTo(process.stdout, 0);
+        readline.clearScreenDown(process.stdout);
+        menu();
     }, 1500);
 }
 
 const menu = () => {
     return  console.log(
     `
+    ***********************************************
+                        MENU
     ***********************************************
     1. Create player
     2. Create Game
@@ -25,7 +27,7 @@ const menu = () => {
 
     Choose one option
     `
-    )
+    );
 }
 
 
@@ -33,12 +35,10 @@ const findData = (name, arr) =>{
 
     const element = arr.find(item => item.name === name)
     if(element){
-        return element
+        return element;
     }
-    return false
+    return false;
 }
-
-
 
 
 

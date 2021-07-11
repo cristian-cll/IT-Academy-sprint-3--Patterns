@@ -17,7 +17,7 @@ menu();
 
 rl.on('line', (line) => {
     switch(line.trim()) {
-        case '1':
+        case '1': // Create a new player
             rl.question("Whats your name? ", (name) => {
                 const player = findData(name, players)
                 if(player){
@@ -26,7 +26,7 @@ rl.on('line', (line) => {
                 players.push(new Player(name))
             });
         break;
-        case '2':
+        case '2': // Create a new game
             rl.question("Whats the game name? ", (name) => {
                 const game = findData(name, games)
                 if(game){
@@ -35,9 +35,9 @@ rl.on('line', (line) => {
                 games.push (new Game(name))
             });
         break;
-        case '3':
+        case '3': // Add player to a game
             if(players.length === 0) {
-                return console.log("There aren't player yet. Create one!");
+                return console.log("There are no unassigned players to a game. Create one!");
             }
             if(games.length === 0) {
                 return console.log("There aren't games yet. Create one!");
@@ -60,7 +60,7 @@ rl.on('line', (line) => {
                 players = players.filter(player => player.name !== name);
             });
         break;
-        case '4':
+        case '4': // Win score for a board player
             if(scoreMarker.board.length === 0){
                 return console.log("There are no players on the board. Create a player and add it to a game.");
             }
@@ -77,7 +77,7 @@ rl.on('line', (line) => {
                 }
             });
         break;
-        case '5':
+        case '5': // Lose score for a board player
             if(scoreMarker.board.length === 0){
                 return console.log("There are no players on the board. Create a player and add it to a game.");
             }
@@ -94,7 +94,7 @@ rl.on('line', (line) => {
                 }
             });
         break;
-        case '6':
+        case '6': // View score marker
             if(scoreMarker.board.length === 0){
                 return console.log("There are no players on the board. Create a player and add it to a game.");
             }
@@ -104,18 +104,16 @@ rl.on('line', (line) => {
             console.log("The winner is: ", scoreMarker.getWinner());
 
         break;
-
-        case '7':
+        case '7': // Test (Fill data automatically)
             test()
             console.log("Filled succesfully. You can view the score marker typing 6.");
         break;
-        case '8':
+        case '8': // Clear screen
             clearScreen();
         break;
-        case '9':
+        case '9': // Exit
             rl.close();
         break;
-
       default:
         console.log('Say what? I might have heard `' + line.trim() + '`' + '\nThis option does not exist.');
         clearScreen();
@@ -144,12 +142,13 @@ const test = () => {
     const MGSX = findData("MGSX", games);
     const MGS2 = findData("MGS2", games);
 
-    MGSX.join(SolidSnake)
-    MGS2.join(Otacon)
+    MGSX.join(SolidSnake);
+    MGS2.join(Otacon);
 
-    SolidSnake.win(300)
-    SolidSnake.lose(100)
-    SolidSnake.win(50)
-    Otacon.win(50)
-    Otacon.lose(20)
+    SolidSnake.win(300);
+    SolidSnake.lose(100);
+    SolidSnake.win(50);
+    Otacon.win(50);
+    Otacon.lose(20);
+
 }
