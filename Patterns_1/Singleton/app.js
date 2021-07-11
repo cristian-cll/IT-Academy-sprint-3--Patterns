@@ -2,7 +2,7 @@ const readline = require("readline");
 const scoreMarker = require("./models/ScoreMarker");
 const Player = require("./models/Player");
 const Game = require("./models/Game");
-const {menu, clearScreen, findData} =require("./functions")
+const {menu, clearScreen, findData} =require("./UserInterface")
 
 let players = [];
 let games = [];
@@ -68,7 +68,7 @@ rl.on('line', (line) => {
             rl.question("Select board's player by name: ", (name) => {
                 const player = findData(name, scoreMarker.board);
                 if(player){
-                    rl.question("Input the score to win: (number int) ", (number) => {
+                    rl.question("Input the score to win: (positive integer number) ", (number) => {
                         if(Math.sign(parseInt(number)) === 1 ){
                             player.win(parseInt(number))
                         }
@@ -85,7 +85,7 @@ rl.on('line', (line) => {
             rl.question("Select board's player by name: ", (name) => {
                 const player = findData(name, scoreMarker.board);
                 if(player){
-                    rl.question("Input the score to win: (number int) ", (number) => {
+                    rl.question("Input the score to lose: (positive integer number) ", (number) => {
                         if(Math.sign(parseInt(number)) === 1 ){
                             player.lose(parseInt(number))
                         }

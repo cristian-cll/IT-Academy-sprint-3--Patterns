@@ -11,7 +11,7 @@
     update(name, scores) {
         const playerFind = this.board.find(player => player.name === name);
         if(playerFind){
-            playerFind.scores += scores
+            playerFind.scores += scores;
         }
     }
 
