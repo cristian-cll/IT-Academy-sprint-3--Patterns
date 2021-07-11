@@ -5,7 +5,7 @@ const clearScreen = () => {
         readline.cursorTo(process.stdout, 0)
         readline.clearScreenDown(process.stdout)
         menu()
-    }, 1000);
+    }, 1500);
 }
 
 const menu = () => {
@@ -13,13 +13,14 @@ const menu = () => {
     `
     ***********************************************
     1. Create player
-    2. Show players
-    3. Select Player
-    4. Create Game
-    5. Add player to a game
-    6. Set score to a player
-    7. View score marker
-    8. Exit
+    2. Create Game
+    3. Add player to a game
+    4. Win score for a board player
+    5. Lose score for a board player
+    6. View score marker
+    7. Test (Fill data automatically)
+    8. Clear screen
+    9. Exit
     ***********************************************
 
     Choose one option
@@ -27,4 +28,18 @@ const menu = () => {
     )
 }
 
-module.exports = {clearScreen, menu};
+
+const findData = (name, arr) =>{
+
+    const element = arr.find(item => item.name === name)
+    if(element){
+        return element
+    }
+    return false
+}
+
+
+
+
+
+module.exports = {clearScreen, menu, findData};

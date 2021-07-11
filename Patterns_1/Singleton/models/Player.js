@@ -1,73 +1,28 @@
-class Players {
+const scoreMarker = require("./ScoreMarker");
 
-    static db = []
+class Player  {
 
-    static selectedPlayer;
-
-    static newPlayer(username){
-        const player = new Player(username)
-        this.db.push(player)
-        return console.log(`'${player.getName()}' player created!`);
-    }
-
-    static selectPlayer(username){
-        this.selectedPlayer = this.db.find(player => {
-            if(player.username === username){
-                 console.log(`'${username}' player selected!`);
-                 return player;
-            }
-            console.log(`It does not exist ${username} player. Create it!`);
-            return undefined;
-        })
-    }
-  
-    static showPlayers(){
-        if(this.db.length > 0) { 
-            console.log("Players: ");
-            this.db.forEach(player => console.log(`- Player: ${player.username}, score: ${player.score}`)) 
-            console.log("Total players: ", this.db.length);
-            return;
-        } 
-        return console.log("There aren't players yet. Create one!");
-    }        
-}
-
-
-  class Player  {
-
-    constructor(username, score) {
-        this.username = username
-        this.score = 0
+    constructor(name) {
+        this.name = name
+        this.scores = 0
+        console.log(`${this.name} player has been created!`);
     }
 
     getName(){
-        return this.username;
+        return this.name;
     }
 
-    addScore(score){
-        return selectedPlayer.score += score 
+    win(scores) {
+        scoreMarker.update(this.name, scores);
+        console.log(`${this.name} player has won ${scores} of score.`);
     }
 
-    subtractScore(score){
-        return selectedPlayer.score -= score 
+    lose(scores) {
+        scoreMarker.update(this.name, -scores);
+        console.log(`${this.name} player has lost ${scores} of score.`);
     }
 }
 
 
 
-/* Players.newPlayer("Cristian")
-Players.showPlayers()
-Players.selectPlayer("Cristian")
-Players.showPlayers()
-console.log(selectedPlayer);
-Players.addScore(50)
-Players.showPlayers()
-console.log(selectedPlayer);
-
-const test = Players.newPlayer("Cristian")
-console.log(test);
-selectedPlayer.addScore(50)
-console.log(selectedPlayer) */
-
-
-module.exports = {Players}
+module.exports = Player;
