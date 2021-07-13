@@ -1,15 +1,16 @@
 const EventEmitter = require('events');
-const topic = new EventEmitter();
+// We define global "variable" of the global NodeJS module. Global availability
+global.app = new EventEmitter();
 
 const User = require("./models/User");
 const Topic = require("./models/Topic");
 
+// We use this event to invoke the console log
+app.on("message", (msg) => console.log(msg));
+
 
 const newUser = (name) => {
     const newUser = new User(name);
-    topic.on("addComment", function(){
-        console.log("Nuevo comentario");
-    })
     return newUser;
 }
 
@@ -17,7 +18,6 @@ const newTopic = (name) => {
     const newTopic = new Topic(name);
     return newTopic;
 }
-
 
 
 const test = () => {
@@ -34,9 +34,9 @@ const test = () => {
     Sports.addSubscriber(Juan);
 
     Music.addComment("Juan", "I like Rock Music");
-    Music.addComment("Laura", "me too");
-    
-    
+    Music.addComment("Laura", "Me too. Specially 80's Rock");
+    Music.addComment("Juan", "Good taste!");
+
     Music.viewDetails();
 
     Juan.inboxMail();

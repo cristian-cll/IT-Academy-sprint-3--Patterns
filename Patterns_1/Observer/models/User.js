@@ -2,17 +2,17 @@ class User {
     constructor(name) {
         this.name = name;
         this.inbox = [];
-        console.log(`${this.name} user has been created!`);
+        app.emit('message',`${this.name} user has been created!`);
     }
 
     updateInbox(comments) {
-        this.inbox = comments;
+        this.inbox.push(comments);
     }
 
     inboxMail() {
-        console.log(`***********************************************\n                ${this.name} MAIL INBOX                 \n***********************************************`);
-        this.inbox.forEach(mail => console.log(`From: ${mail.from} | Subject: New Comment - ${mail.text}`));
-        console.log(`***********************************************`);
+        app.emit('message',`***********************************************\n                ${this.name} MAIL INBOX                 \n***********************************************`);
+        this.inbox.forEach(mail =>  app.emit("message", mail));
+        app.emit('message',`***********************************************`);
     }
 }
 

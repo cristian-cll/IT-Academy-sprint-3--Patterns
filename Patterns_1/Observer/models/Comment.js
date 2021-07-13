@@ -4,7 +4,7 @@ class Comment {
         this.from = from;
         this.text = text;
         this.date = new Date().toLocaleDateString();
-        console.log(`New comment from ${this.from}`);
+        app.emit('message',`New comment from ${this.from}`);
     }
 
 }
