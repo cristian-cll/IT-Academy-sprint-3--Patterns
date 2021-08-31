@@ -7,6 +7,7 @@ class User {
 
     updateInbox(comments) {
         this.inbox.push(comments);
+        app.emit('message',`${this.name} user received a comment`);
     }
 
     inboxMail() {

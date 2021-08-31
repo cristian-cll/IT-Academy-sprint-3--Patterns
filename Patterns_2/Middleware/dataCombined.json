@@ -1,0 +1,14 @@
+[
+  {
+    "operation": "sum",
+    "values": [4, 2, 2]
+  },
+  {
+    "operation": "substraction",
+    "values": [4, 1, 2]
+  },
+  {
+    "operation": "multiplication",
+    "values": [2, 2, 2]
+  }
+]

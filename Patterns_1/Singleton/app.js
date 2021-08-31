@@ -70,7 +70,7 @@ rl.on('line', (line) => {
                 if(player){
                     rl.question("Input the score to win: (positive integer number) ", (number) => {
                         if(Math.sign(parseInt(number)) === 1 ){
-                            player.win(parseInt(number))
+                            return player.win(parseInt(number));
                         }
                         return console.log("Is not a number!");
                     })
@@ -87,7 +87,7 @@ rl.on('line', (line) => {
                 if(player){
                     rl.question("Input the score to lose: (positive integer number) ", (number) => {
                         if(Math.sign(parseInt(number)) === 1 ){
-                            player.lose(parseInt(number))
+                            return player.lose(parseInt(number));
                         }
                         return console.log("Is not a number!");
                     })
