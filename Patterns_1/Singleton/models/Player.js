@@ -1,5 +1,3 @@
-const scoreMarker = require("./ScoreMarker");
-
 class Player  {
 
     constructor(name) {
@@ -13,12 +11,12 @@ class Player  {
     }
 
     win(scores) {
-        scoreMarker.update(this.name, scores);
+        this.scores += scores;
         console.log(`${this.name} player has won ${scores} of score.`);
     }
 
     lose(scores) {
-        scoreMarker.update(this.name, -scores);
+        this.scores -= scores;
         console.log(`${this.name} player has lost ${scores} of score.`);
     }
 }

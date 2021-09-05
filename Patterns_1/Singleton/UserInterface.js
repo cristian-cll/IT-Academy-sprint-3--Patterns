@@ -11,21 +11,23 @@ const clearScreen = () => {
 const menu = () => {
     return  console.log(
     `
-    ***********************************************
-                        MENU
-    ***********************************************
-    1. Create player
-    2. Create Game
-    3. Add player to a game
-    4. Win score for a board player
-    5. Lose score for a board player
-    6. View score marker
-    7. Test (Fill data automatically)
-    8. Clear screen
-    9. Exit
-    ***********************************************
+    ***************************************************
+    |                    MGSX Game                    |
+    ---------------------------------------------------
+    |                      MENU                       |
+    ***************************************************
+    | 1. Create player                                |
+    | 2. Add player to a game                         |
+    | 3. Win points for a game player                 |
+    | 4. Lose point for a game player                 |
+    | 5. View score marker                            |
+    | 6. Test (Fill data automatically)               |
+    | 7. Clear screen                                 |
+    | 8. Exit                                         |
+    | 9. Try to instance again Score Marker Singleton |
+    ***************************************************
 
-    Choose one option
+    Choose an option by number:
     `
     );
 }

@@ -1,34 +1,26 @@
- class ScoreMarker {
+class ScoreMarker {
 
     constructor(){
-        this.board = [];
-    }
-
-    join(player) {
-        this.board.push(player);
-    }
-
-    update(name, scores) {
-        const playerFind = this.board.find(player => player.name === name);
-        if(playerFind){
-            playerFind.scores += scores;
+        if (ScoreMarker._instance) {
+            throw new Error("Singleton classes can't be instantiated more than once.");
         }
+        ScoreMarker._instance = this;
     }
 
-    showScores() {
-        return this.board;
+    showScores(board) {
+        return board;
     }
 
-    getWinner() {
-        return this.sort()[0];
+    getWinner(board) {
+        return this.sort(board)[0];
     }
     
-    sort() {
-        return this.board.sort((p1, p2) => p2.scores - p1.scores);
+    sort(board) {
+        return board.sort((p1, p2) => p2.scores - p1.scores);
     }
   
 }
 
 
   
-module.exports = new ScoreMarker();
+module.exports = ScoreMarker;

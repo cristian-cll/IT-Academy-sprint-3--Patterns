@@ -3,7 +3,9 @@ const scoreMarker = require("./ScoreMarker");
 class Game {
     constructor(name) {
         this.name = name
-        console.log(`${this.name} game has been created!`);
+        console.log(`--> ${this.name} game has been created!`);
+        this.score = new scoreMarker();
+        this.board = [];
     }
 
     getName() {
@@ -11,13 +13,17 @@ class Game {
     }
 
     join(player) {
-        if(player){
-            console.log(`Player '${player.getName()}' added to '${this.getName()}' game`);
-            scoreMarker.join(player);
-            return;
-        }
-        console.log("Does not exist this player");
-        return false;
+        console.log(`Player '${player.getName()}' added to '${this.getName()}' game`);
+        return this.board.push(player);
+    }
+
+
+    showScores() {
+        return this.score.showScores(this.board)
+    }
+
+    getWinner() {
+        return this.score.getWinner(this.board)
     }
 }
 
